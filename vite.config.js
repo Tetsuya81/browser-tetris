@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
-export default defineConfig({
-  base: '/browser-tetris/',
+export default defineConfig(({ command }) => ({
+  base: command === 'serve' ? '/' : '/browser-tetris/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -11,4 +11,4 @@ export default defineConfig({
     port: 5173,
     open: true
   }
-});
+}));
