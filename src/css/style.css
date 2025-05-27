@@ -1,0 +1,162 @@
+:root {
+    --primary-color: #0084ff;
+    --secondary-color: #ff6b6b;
+    --background-color: #1a1a2e;
+    --board-background: #16213e;
+    --text-color: #ffffff;
+    --cell-size: 30px;
+    --board-width: 300px;
+    --board-height: 600px;
+    --border-radius: 8px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.tetris {
+    display: grid;
+    grid-template-columns: auto 200px;
+    gap: 30px;
+    align-items: start;
+}
+
+.tetris__game-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tetris__board {
+    background-color: var(--board-background);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.tetris__next-piece {
+    background-color: var(--board-background);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.tetris__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tetris__score-panel,
+.tetris__level-panel,
+.tetris__lines-panel {
+    background-color: var(--board-background);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.tetris__score-panel h2,
+.tetris__level-panel h2,
+.tetris__lines-panel h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.tetris__score,
+.tetris__level,
+.tetris__lines {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.tetris__controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tetris__button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.tetris__button--start {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.tetris__button--start:hover {
+    background-color: #0066cc;
+    transform: translateY(-2px);
+}
+
+.tetris__button--pause {
+    background-color: #ffa500;
+    color: white;
+}
+
+.tetris__button--pause:hover {
+    background-color: #ff8c00;
+    transform: translateY(-2px);
+}
+
+.tetris__button--reset {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.tetris__button--reset:hover {
+    background-color: #ff5252;
+    transform: translateY(-2px);
+}
+
+.tetris__instructions {
+    margin-top: 30px;
+    background-color: var(--board-background);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.tetris__instructions h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.tetris__instructions ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tetris__instructions li {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    background-color: rgba(0, 132, 255, 0.1);
+    border-radius: 4px;
+}

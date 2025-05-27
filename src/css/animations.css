@@ -1,0 +1,118 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes lineClean {
+    0% {
+        background-color: var(--primary-color);
+        transform: scaleX(1);
+    }
+    50% {
+        background-color: #fff;
+        transform: scaleX(1.1);
+    }
+    100% {
+        background-color: var(--primary-color);
+        transform: scaleX(0);
+        opacity: 0;
+    }
+}
+
+@keyframes drop {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px var(--primary-color);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
+    }
+    100% {
+        box-shadow: 0 0 5px var(--primary-color);
+    }
+}
+
+.tetris {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.tetris__button:active {
+    animation: pulse 0.3s ease-out;
+}
+
+.tetris__board {
+    transition: box-shadow 0.3s ease;
+}
+
+.tetris__board:hover {
+    animation: glow 2s infinite;
+}
+
+.line-clear {
+    animation: lineClean 0.5s ease-out forwards;
+}
+
+.game-over {
+    animation: shake 0.5s ease-out;
+}
+
+.new-piece {
+    animation: drop 0.3s ease-out;
+}
+
+.score-update {
+    animation: pulse 0.5s ease-out;
+}
+
+.tetris__score,
+.tetris__level,
+.tetris__lines {
+    transition: all 0.3s ease;
+}
+
+.tetris__score.updated,
+.tetris__level.updated,
+.tetris__lines.updated {
+    color: var(--primary-color);
+    transform: scale(1.2);
+}
