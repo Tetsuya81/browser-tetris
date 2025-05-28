@@ -86,3 +86,73 @@
         touch-action: none;
     }
 }
+
+/* モバイル専用のレイアウト調整 */
+@media (max-width: 768px) and (pointer: coarse) {
+    body {
+        padding-bottom: 180px; /* モバイルコントロール用のスペース */
+    }
+    
+    .tetris__game-area {
+        margin-bottom: 20px;
+    }
+    
+    /* ゲーム画面のサイズ調整 */
+    .tetris__board {
+        width: min(90vw, 300px) !important;
+        height: min(50vh, 600px) !important;
+    }
+    
+    .tetris__mobile-controls {
+        width: min(90vw, 400px);
+        max-width: 100%;
+    }
+    
+    /* 横向き表示への対応 */
+    @media (orientation: landscape) {
+        body {
+            padding-bottom: 100px;
+        }
+        
+        .tetris {
+            grid-template-columns: auto auto;
+            gap: 20px;
+        }
+        
+        .tetris__board {
+            height: min(70vh, 400px) !important;
+        }
+        
+        .tetris__mobile-controls {
+            bottom: 10px;
+            padding: 5px;
+        }
+        
+        .tetris__mobile-btn {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .tetris__mobile-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
+
+/* 小型スマートフォン向け調整 */
+@media (max-width: 380px) and (pointer: coarse) {
+    .tetris__mobile-btn {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .tetris__mobile-controls-group {
+        gap: 8px;
+    }
+    
+    .tetris__mobile-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+}

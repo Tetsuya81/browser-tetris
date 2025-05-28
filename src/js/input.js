@@ -10,6 +10,7 @@ export class InputHandler {
         this.setupKeyboardControls();
         this.setupTouchControls();
         this.setupButtonControls();
+        this.setupMobileControls();
     }
 
     setupKeyboardControls() {
@@ -143,6 +144,94 @@ export class InputHandler {
         this.game.paused = !this.game.paused;
         const pauseButton = document.getElementById('pause-button');
         pauseButton.textContent = this.game.paused ? '再開' : '一時停止';
+    }
+
+    setupMobileControls() {
+        // モバイル用の方向ボタン
+        const mobileLeft = document.getElementById('mobile-left');
+        const mobileRight = document.getElementById('mobile-right');
+        const mobileDown = document.getElementById('mobile-down');
+        const mobileRotate = document.getElementById('mobile-rotate');
+        const mobileDrop = document.getElementById('mobile-drop');
+
+        // 左ボタン
+        if (mobileLeft) {
+            let leftInterval;
+            mobileLeft.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.game.movePiece(-1, 0);
+                leftInterval = setInterval(() => {
+                    this.game.movePiece(-1, 0);
+                }, this.moveDelay);
+            });
+            
+            mobileLeft.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                clearInterval(leftInterval);
+            });
+            
+            mobileLeft.addEventListener('touchcancel', () => {
+                clearInterval(leftInterval);
+            });
+        }
+
+        // 右ボタン
+        if (mobileRight) {
+            let rightInterval;
+            mobileRight.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.game.movePiece(1, 0);
+                rightInterval = setInterval(() => {
+                    this.game.movePiece(1, 0);
+                }, this.moveDelay);
+            });
+            
+            mobileRight.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                clearInterval(rightInterval);
+            });
+            
+            mobileRight.addEventListener('touchcancel', () => {
+                clearInterval(rightInterval);
+            });
+        }
+
+        // 下ボタン
+        if (mobileDown) {
+            let downInterval;
+            mobileDown.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.game.movePiece(0, 1);
+                downInterval = setInterval(() => {
+                    this.game.movePiece(0, 1);
+                }, 50);
+            });
+            
+            mobileDown.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                clearInterval(downInterval);
+            });
+            
+            mobileDown.addEventListener('touchcancel', () => {
+                clearInterval(downInterval);
+            });
+        }
+
+        // 回転ボタン
+        if (mobileRotate) {
+            mobileRotate.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.game.rotatePiece();
+            });
+        }
+
+        // ハードドロップボタン
+        if (mobileDrop) {
+            mobileDrop.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.game.hardDrop();
+            });
+        }
     }
 
     update() {

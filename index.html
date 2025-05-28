@@ -40,6 +40,41 @@
         </aside>
     </main>
     
+    <!-- モバイル用コントロールボタン -->
+    <div class="tetris__mobile-controls" id="mobile-controls">
+        <div class="tetris__mobile-controls-group tetris__mobile-controls-group--directional">
+            <button class="tetris__mobile-btn tetris__mobile-btn--left" id="mobile-left" aria-label="左移動">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <button class="tetris__mobile-btn tetris__mobile-btn--down" id="mobile-down" aria-label="高速落下">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 9l6 6 6-6"/>
+                </svg>
+            </button>
+            <button class="tetris__mobile-btn tetris__mobile-btn--right" id="mobile-right" aria-label="右移動">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+        </div>
+        <div class="tetris__mobile-controls-group tetris__mobile-controls-group--actions">
+            <button class="tetris__mobile-btn tetris__mobile-btn--rotate" id="mobile-rotate" aria-label="回転">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M23 4v6h-6M1 20v-6h6"/>
+                    <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+                </svg>
+            </button>
+            <button class="tetris__mobile-btn tetris__mobile-btn--drop" id="mobile-drop" aria-label="ハードドロップ">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v14M12 16l-4-4M12 16l4-4"/>
+                    <rect x="6" y="20" width="12" height="2"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    
     <footer class="tetris__instructions">
         <h3>操作方法</h3>
         <ul>

@@ -160,3 +160,92 @@ body {
     background-color: rgba(0, 132, 255, 0.1);
     border-radius: 4px;
 }
+
+/* モバイルコントロール */
+.tetris__mobile-controls {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    padding: 10px;
+    background-color: rgba(26, 26, 46, 0.9);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.tetris__mobile-controls-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tetris__mobile-controls-group:last-child {
+    margin-bottom: 0;
+}
+
+.tetris__mobile-controls-group--directional {
+    justify-content: center;
+}
+
+.tetris__mobile-controls-group--actions {
+    justify-content: space-around;
+}
+
+.tetris__mobile-btn {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--primary-color);
+    background-color: var(--board-background);
+    color: var(--text-color);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.tetris__mobile-btn:active {
+    background-color: var(--primary-color);
+    transform: scale(0.95);
+}
+
+.tetris__mobile-btn:hover {
+    background-color: rgba(0, 132, 255, 0.2);
+}
+
+.tetris__mobile-btn svg {
+    width: 28px;
+    height: 28px;
+    pointer-events: none;
+}
+
+/* 特定のボタンのスタイル調整 */
+.tetris__mobile-btn--drop {
+    background-color: rgba(255, 107, 107, 0.2);
+    border-color: var(--secondary-color);
+}
+
+.tetris__mobile-btn--drop:active {
+    background-color: var(--secondary-color);
+}
+
+.tetris__mobile-btn--rotate {
+    background-color: rgba(0, 132, 255, 0.2);
+}
+
+/* モバイルでのみ表示 */
+@media (max-width: 768px) and (pointer: coarse) {
+    .tetris__mobile-controls {
+        display: block;
+    }
+    
+    .tetris__instructions {
+        display: none;
+    }
+}
