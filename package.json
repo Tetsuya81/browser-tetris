@@ -10,7 +10,11 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist",
+    "pm2:start": "pm2 start ecosystem.config.cjs",
+    "pm2:stop": "pm2 stop browser-tetris",
+    "pm2:restart": "pm2 restart browser-tetris",
+    "pm2:logs": "pm2 logs browser-tetris"
   },
   "keywords": [
     "tetris",
