@@ -4,9 +4,9 @@
     --background-color: #1a1a2e;
     --board-background: #16213e;
     --text-color: #ffffff;
-    --cell-size: 30px;
-    --board-width: 300px;
-    --board-height: 600px;
+    --cell-size: 36px;
+    --board-width: 360px;
+    --board-height: 720px;
     --border-radius: 8px;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
@@ -31,15 +31,18 @@ body {
 
 .tetris {
     display: grid;
-    grid-template-columns: auto 200px;
+    grid-template-columns: 3fr 1fr;
     gap: 30px;
     align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .tetris__game-area {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
 .tetris__board {
@@ -60,48 +63,70 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
+    max-width: 250px;
 }
 
-.tetris__score-panel,
-.tetris__level-panel,
-.tetris__lines-panel {
+.tetris__stats-panel {
     background-color: var(--board-background);
     padding: 20px;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.tetris__score-panel h2,
-.tetris__level-panel h2,
-.tetris__lines-panel h2 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+.tetris__stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tetris__stat:last-child {
+    border-bottom: none;
+}
+
+.tetris__stat-label {
+    font-size: 1.1rem;
     color: var(--primary-color);
+    font-weight: 600;
 }
 
 .tetris__score,
 .tetris__level,
 .tetris__lines {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: bold;
 }
 
 .tetris__controls {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
+    justify-content: space-around;
 }
 
 .tetris__button {
-    padding: 12px 24px;
+    padding: 12px;
+    width: 50px;
+    height: 50px;
     font-size: 1rem;
     font-weight: bold;
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tetris__button svg {
+    pointer-events: none;
 }
 
 .tetris__button--start {
@@ -159,4 +184,107 @@ body {
     padding: 5px 10px;
     background-color: rgba(0, 132, 255, 0.1);
     border-radius: 4px;
+}
+
+/* モバイルコントロール */
+.tetris__mobile-controls {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    padding: 10px;
+    background-color: rgba(26, 26, 46, 0.9);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+/* カーソルポインタをボタンに適用 */
+.tetris__button {
+    cursor: pointer;
+}
+
+/* キャンバスのカーソルスタイル */
+.tetris__board {
+    cursor: default;
+}
+
+.tetris__board.clickable {
+    cursor: pointer;
+}
+
+.tetris__mobile-controls-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tetris__mobile-controls-group:last-child {
+    margin-bottom: 0;
+}
+
+.tetris__mobile-controls-group--directional {
+    justify-content: center;
+}
+
+.tetris__mobile-controls-group--actions {
+    justify-content: space-around;
+}
+
+.tetris__mobile-btn {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--primary-color);
+    background-color: var(--board-background);
+    color: var(--text-color);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.tetris__mobile-btn:active {
+    background-color: var(--primary-color);
+    transform: scale(0.95);
+}
+
+.tetris__mobile-btn:hover {
+    background-color: rgba(0, 132, 255, 0.2);
+}
+
+.tetris__mobile-btn svg {
+    width: 28px;
+    height: 28px;
+    pointer-events: none;
+}
+
+/* 特定のボタンのスタイル調整 */
+.tetris__mobile-btn--drop {
+    background-color: rgba(255, 107, 107, 0.2);
+    border-color: var(--secondary-color);
+}
+
+.tetris__mobile-btn--drop:active {
+    background-color: var(--secondary-color);
+}
+
+.tetris__mobile-btn--rotate {
+    background-color: rgba(0, 132, 255, 0.2);
+}
+
+/* モバイルでのみ表示 */
+@media (max-width: 768px) and (pointer: coarse) {
+    .tetris__mobile-controls {
+        display: block;
+    }
+    
+    .tetris__instructions {
+        display: none;
+    }
 }

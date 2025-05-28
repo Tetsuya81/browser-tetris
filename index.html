@@ -12,33 +12,79 @@
 <body>
     <main class="tetris">
         <section class="tetris__game-area">
-            <canvas class="tetris__board" id="tetris-board" width="300" height="600" aria-label="テトリスゲーム盤面"></canvas>
-            <canvas class="tetris__next-piece" id="next-piece" width="120" height="120" aria-label="次のピース"></canvas>
+            <canvas class="tetris__board" id="tetris-board" width="360" height="720" aria-label="テトリスゲーム盤面"></canvas>
         </section>
         
         <aside class="tetris__sidebar">
-            <div class="tetris__score-panel">
-                <h2>スコア</h2>
-                <div class="tetris__score" id="score" aria-live="polite">0</div>
-            </div>
+            <canvas class="tetris__next-piece" id="next-piece" width="120" height="120" aria-label="次のピース"></canvas>
             
-            <div class="tetris__level-panel">
-                <h2>レベル</h2>
-                <div class="tetris__level" id="level" aria-live="polite">1</div>
-            </div>
-            
-            <div class="tetris__lines-panel">
-                <h2>ライン</h2>
-                <div class="tetris__lines" id="lines" aria-live="polite">0</div>
+            <div class="tetris__stats-panel">
+                <div class="tetris__stat">
+                    <span class="tetris__stat-label">スコア</span>
+                    <span class="tetris__score" id="score" aria-live="polite">0</span>
+                </div>
+                <div class="tetris__stat">
+                    <span class="tetris__stat-label">レベル</span>
+                    <span class="tetris__level" id="level" aria-live="polite">1</span>
+                </div>
+                <div class="tetris__stat">
+                    <span class="tetris__stat-label">ライン</span>
+                    <span class="tetris__lines" id="lines" aria-live="polite">0</span>
+                </div>
             </div>
             
             <div class="tetris__controls">
-                <button class="tetris__button tetris__button--start" id="start-button">開始</button>
-                <button class="tetris__button tetris__button--pause" id="pause-button">一時停止</button>
-                <button class="tetris__button tetris__button--reset" id="reset-button">リセット</button>
+                <button class="tetris__button tetris__button--pause" id="pause-button" aria-label="一時停止">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="6" y="4" width="4" height="16"/>
+                        <rect x="14" y="4" width="4" height="16"/>
+                    </svg>
+                </button>
+                <button class="tetris__button tetris__button--reset" id="reset-button" aria-label="リセット">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 4v6h-6"/>
+                        <path d="M1 20v-6h6"/>
+                        <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+                    </svg>
+                </button>
             </div>
         </aside>
     </main>
+    
+    <!-- モバイル用コントロールボタン -->
+    <div class="tetris__mobile-controls" id="mobile-controls">
+        <div class="tetris__mobile-controls-group tetris__mobile-controls-group--directional">
+            <button class="tetris__mobile-btn tetris__mobile-btn--left" id="mobile-left" aria-label="左移動">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <button class="tetris__mobile-btn tetris__mobile-btn--down" id="mobile-down" aria-label="高速落下">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 9l6 6 6-6"/>
+                </svg>
+            </button>
+            <button class="tetris__mobile-btn tetris__mobile-btn--right" id="mobile-right" aria-label="右移動">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+        </div>
+        <div class="tetris__mobile-controls-group tetris__mobile-controls-group--actions">
+            <button class="tetris__mobile-btn tetris__mobile-btn--rotate" id="mobile-rotate" aria-label="回転">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M23 4v6h-6M1 20v-6h6"/>
+                    <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+                </svg>
+            </button>
+            <button class="tetris__mobile-btn tetris__mobile-btn--drop" id="mobile-drop" aria-label="ハードドロップ">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v14M12 16l-4-4M12 16l4-4"/>
+                    <rect x="6" y="20" width="12" height="2"/>
+                </svg>
+            </button>
+        </div>
+    </div>
     
     <footer class="tetris__instructions">
         <h3>操作方法</h3>

@@ -10,6 +10,7 @@ export class InputHandler {
         this.setupKeyboardControls();
         this.setupTouchControls();
         this.setupButtonControls();
+        this.setupMobileControls();
     }
 
     setupKeyboardControls() {
@@ -112,23 +113,7 @@ export class InputHandler {
     }
 
     setupButtonControls() {
-        const startButton = document.getElementById('start-button');
-        const pauseButton = document.getElementById('pause-button');
-        const resetButton = document.getElementById('reset-button');
-
-        startButton.addEventListener('click', () => {
-            if (this.game.gameOver) {
-                this.game.init();
-            }
-        });
-
-        pauseButton.addEventListener('click', () => {
-            this.togglePause();
-        });
-
-        resetButton.addEventListener('click', () => {
-            this.game.init();
-        });
+        // ボタンのイベントリスナーはgame.jsで管理するため、ここでは設定しない
     }
 
     handleMove(dx, dy) {
@@ -140,9 +125,97 @@ export class InputHandler {
     }
 
     togglePause() {
-        this.game.paused = !this.game.paused;
-        const pauseButton = document.getElementById('pause-button');
-        pauseButton.textContent = this.game.paused ? '再開' : '一時停止';
+        if (this.game.togglePause) {
+            this.game.togglePause();
+        }
+    }
+
+    setupMobileControls() {
+        // モバイル用の方向ボタン
+        const mobileLeft = document.getElementById('mobile-left');
+        const mobileRight = document.getElementById('mobile-right');
+        const mobileDown = document.getElementById('mobile-down');
+        const mobileRotate = document.getElementById('mobile-rotate');
+        const mobileDrop = document.getElementById('mobile-drop');
+
+        // 左ボタン
+        if (mobileLeft) {
+            let leftInterval;
+            mobileLeft.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.game.movePiece(-1, 0);
+                leftInterval = setInterval(() => {
+                    this.game.movePiece(-1, 0);
+                }, this.moveDelay);
+            });
+            
+            mobileLeft.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                clearInterval(leftInterval);
+            });
+            
+            mobileLeft.addEventListener('touchcancel', () => {
+                clearInterval(leftInterval);
+            });
+        }
+
+        // 右ボタン
+        if (mobileRight) {
+            let rightInterval;
+            mobileRight.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.game.movePiece(1, 0);
+                rightInterval = setInterval(() => {
+                    this.game.movePiece(1, 0);
+                }, this.moveDelay);
+            });
+            
+            mobileRight.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                clearInterval(rightInterval);
+            });
+            
+            mobileRight.addEventListener('touchcancel', () => {
+                clearInterval(rightInterval);
+            });
+        }
+
+        // 下ボタン
+        if (mobileDown) {
+            let downInterval;
+            mobileDown.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.game.movePiece(0, 1);
+                downInterval = setInterval(() => {
+                    this.game.movePiece(0, 1);
+                }, 50);
+            });
+            
+            mobileDown.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                clearInterval(downInterval);
+            });
+            
+            mobileDown.addEventListener('touchcancel', () => {
+                clearInterval(downInterval);
+            });
+        }
+
+        // 回転ボタン
+        if (mobileRotate) {
+            mobileRotate.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.game.rotatePiece();
+            });
+        }
+
+        // ハードドロップボタン
+        if (mobileDrop) {
+            mobileDrop.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.game.hardDrop();
+            });
+        }
     }
 
     update() {

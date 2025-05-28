@@ -1,33 +1,71 @@
 @media (max-width: 768px) {
     .tetris {
-        grid-template-columns: 1fr;
-        justify-items: center;
+        grid-template-columns: 2fr minmax(120px, 140px);
+        gap: 15px;
+        padding: 0 10px;
+        max-width: 100%;
+    }
+    
+    .tetris__game-area {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .tetris__board {
+        max-width: 100%;
     }
     
     .tetris__sidebar {
         width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        max-width: 150px;
+        flex-direction: column;
+        gap: 15px;
+        padding: 0;
     }
     
-    .tetris__score-panel,
-    .tetris__level-panel,
-    .tetris__lines-panel {
-        flex: 1;
-        min-width: 100px;
+    .tetris__next-piece {
+        width: 80px !important;
+        height: 80px !important;
+        margin: 0 auto;
+    }
+    
+    .tetris__stats-panel {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .tetris__stat {
+        padding: 5px 0;
+    }
+    
+    .tetris__stat-label {
+        font-size: 0.9rem;
+    }
+    
+    .tetris__score,
+    .tetris__level,
+    .tetris__lines {
+        font-size: 1.2rem;
     }
     
     .tetris__controls {
         width: 100%;
         flex-direction: row;
         justify-content: center;
+        gap: 10px;
     }
     
     .tetris__button {
-        flex: 1;
-        padding: 10px 16px;
-        font-size: 0.9rem;
+        width: 40px;
+        height: 40px;
+        padding: 6px;
+    }
+    
+    .tetris__button svg {
+        width: 16px;
+        height: 16px;
     }
     
     .tetris__instructions ul {
@@ -37,23 +75,41 @@
 
 @media (max-width: 480px) {
     body {
-        padding: 10px;
+        padding: 5px;
+    }
+    
+    .tetris {
+        grid-template-columns: 1fr minmax(100px, 120px);
+        gap: 10px;
     }
     
     .tetris__board {
-        width: 240px !important;
-        height: 480px !important;
+        --board-width: min(70vw, 280px);
+        width: var(--board-width) !important;
+        height: calc(var(--board-width) * 2) !important;
+    }
+    
+    .tetris__sidebar {
+        max-width: 120px;
     }
     
     .tetris__next-piece {
-        width: 100px !important;
-        height: 100px !important;
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .tetris__stats-panel {
+        padding: 8px;
+    }
+    
+    .tetris__stat-label {
+        font-size: 0.8rem;
     }
     
     .tetris__score,
     .tetris__level,
     .tetris__lines {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
     
     .tetris__instructions {
@@ -72,17 +128,90 @@
     }
     
     .tetris__sidebar {
-        width: 250px;
+        width: 280px;
+        max-width: 280px;
     }
 }
 
 @media (hover: none) and (pointer: coarse) {
     .tetris__button {
-        padding: 14px 28px;
-        font-size: 1.1rem;
+        width: 50px;
+        height: 50px;
     }
     
     .tetris__board {
         touch-action: none;
+    }
+}
+
+/* モバイル専用のレイアウト調整 */
+@media (max-width: 768px) and (pointer: coarse) {
+    body {
+        padding-bottom: 180px; /* モバイルコントロール用のスペース */
+    }
+    
+    .tetris__game-area {
+        margin-bottom: 20px;
+    }
+    
+    /* ゲーム画面のサイズ調整 - 比率を10:20（1:2）に固定 */
+    .tetris__board {
+        --board-width: min(65vw, 300px);
+        width: var(--board-width) !important;
+        height: calc(var(--board-width) * 2) !important;
+        max-height: 70vh;
+    }
+    
+    .tetris__mobile-controls {
+        width: min(90vw, 400px);
+        max-width: 100%;
+    }
+    
+    /* 横向き表示への対応 */
+    @media (orientation: landscape) {
+        body {
+            padding-bottom: 100px;
+        }
+        
+        .tetris {
+            grid-template-columns: auto auto;
+            gap: 20px;
+        }
+        
+        .tetris__board {
+            height: min(70vh, 400px) !important;
+        }
+        
+        .tetris__mobile-controls {
+            bottom: 10px;
+            padding: 5px;
+        }
+        
+        .tetris__mobile-btn {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .tetris__mobile-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
+
+/* 小型スマートフォン向け調整 */
+@media (max-width: 380px) and (pointer: coarse) {
+    .tetris__mobile-btn {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .tetris__mobile-controls-group {
+        gap: 8px;
+    }
+    
+    .tetris__mobile-btn svg {
+        width: 24px;
+        height: 24px;
     }
 }
