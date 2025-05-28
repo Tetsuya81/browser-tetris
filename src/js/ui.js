@@ -1,6 +1,7 @@
 export class UI {
-    constructor(game) {
+    constructor(game, gameController) {
         this.game = game;
+        this.gameController = gameController;
         this.boardCanvas = document.getElementById('tetris-board');
         this.boardCtx = this.boardCanvas.getContext('2d');
         this.nextCanvas = document.getElementById('next-piece');
@@ -160,6 +161,7 @@ export class UI {
 
     showGameOver() {
         this.boardCanvas.classList.add('game-over');
+        this.boardCanvas.classList.add('clickable');
         
         this.boardCtx.fillStyle = 'rgba(0, 0, 0, 0.7)';
         this.boardCtx.fillRect(0, 0, 
@@ -174,7 +176,57 @@ export class UI {
         this.boardCtx.fillText(
             'GAME OVER',
             this.game.boardWidth * this.cellSize / 2,
-            this.game.boardHeight * this.cellSize / 2
+            this.game.boardHeight * this.cellSize / 2 - 40
+        );
+        
+        this.drawButton('Restart', this.game.boardHeight * this.cellSize / 2 + 20);
+    }
+    
+    showStartScreen() {
+        this.boardCanvas.classList.add('clickable');
+        
+        this.boardCtx.fillStyle = '#16213e';
+        this.boardCtx.fillRect(0, 0, 
+            this.game.boardWidth * this.cellSize,
+            this.game.boardHeight * this.cellSize
+        );
+        
+        this.boardCtx.fillStyle = '#fff';
+        this.boardCtx.font = 'bold 40px Arial';
+        this.boardCtx.textAlign = 'center';
+        this.boardCtx.textBaseline = 'middle';
+        this.boardCtx.fillText(
+            'TETRIS',
+            this.game.boardWidth * this.cellSize / 2,
+            this.game.boardHeight * this.cellSize / 2 - 60
+        );
+        
+        this.drawButton('Start', this.game.boardHeight * this.cellSize / 2 + 20);
+    }
+    
+    drawButton(text, y) {
+        const buttonWidth = 120;
+        const buttonHeight = 40;
+        const x = (this.game.boardWidth * this.cellSize - buttonWidth) / 2;
+        
+        // Button background
+        this.boardCtx.fillStyle = '#0084ff';
+        this.boardCtx.fillRect(x, y, buttonWidth, buttonHeight);
+        
+        // Button border
+        this.boardCtx.strokeStyle = '#fff';
+        this.boardCtx.lineWidth = 2;
+        this.boardCtx.strokeRect(x, y, buttonWidth, buttonHeight);
+        
+        // Button text
+        this.boardCtx.fillStyle = '#fff';
+        this.boardCtx.font = 'bold 20px Arial';
+        this.boardCtx.textAlign = 'center';
+        this.boardCtx.textBaseline = 'middle';
+        this.boardCtx.fillText(
+            text,
+            this.game.boardWidth * this.cellSize / 2,
+            y + buttonHeight / 2
         );
     }
 }

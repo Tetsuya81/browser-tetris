@@ -113,23 +113,7 @@ export class InputHandler {
     }
 
     setupButtonControls() {
-        const startButton = document.getElementById('start-button');
-        const pauseButton = document.getElementById('pause-button');
-        const resetButton = document.getElementById('reset-button');
-
-        startButton.addEventListener('click', () => {
-            if (this.game.gameOver) {
-                this.game.init();
-            }
-        });
-
-        pauseButton.addEventListener('click', () => {
-            this.togglePause();
-        });
-
-        resetButton.addEventListener('click', () => {
-            this.game.init();
-        });
+        // ボタンのイベントリスナーはgame.jsで管理するため、ここでは設定しない
     }
 
     handleMove(dx, dy) {
@@ -141,9 +125,9 @@ export class InputHandler {
     }
 
     togglePause() {
-        this.game.paused = !this.game.paused;
-        const pauseButton = document.getElementById('pause-button');
-        pauseButton.textContent = this.game.paused ? '再開' : '一時停止';
+        if (this.game.togglePause) {
+            this.game.togglePause();
+        }
     }
 
     setupMobileControls() {

@@ -12,6 +12,7 @@ export class TetrisGame {
         this.lines = 0;
         this.gameOver = false;
         this.paused = false;
+        this.isPaused = false;
         this.dropTime = 1000;
         this.lastDropTime = 0;
     }
@@ -27,6 +28,7 @@ export class TetrisGame {
         this.lines = 0;
         this.gameOver = false;
         this.paused = false;
+        this.isPaused = false;
         this.dropTime = 1000;
         this.currentPiece = getRandomTetromino();
         this.nextPiece = getRandomTetromino();
@@ -134,7 +136,7 @@ export class TetrisGame {
     }
 
     update(currentTime) {
-        if (this.gameOver || this.paused) return;
+        if (this.gameOver || this.isPaused) return;
 
         if (currentTime - this.lastDropTime > this.dropTime) {
             if (!this.movePiece(0, 1)) {
@@ -150,5 +152,9 @@ export class TetrisGame {
             ghostY++;
         }
         return ghostY;
+    }
+    
+    togglePause() {
+        this.isPaused = !this.isPaused;
     }
 }

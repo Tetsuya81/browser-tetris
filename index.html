@@ -13,10 +13,11 @@
     <main class="tetris">
         <section class="tetris__game-area">
             <canvas class="tetris__board" id="tetris-board" width="300" height="600" aria-label="テトリスゲーム盤面"></canvas>
-            <canvas class="tetris__next-piece" id="next-piece" width="120" height="120" aria-label="次のピース"></canvas>
         </section>
         
         <aside class="tetris__sidebar">
+            <canvas class="tetris__next-piece" id="next-piece" width="120" height="120" aria-label="次のピース"></canvas>
+            
             <div class="tetris__stats-panel">
                 <div class="tetris__stat">
                     <span class="tetris__stat-label">スコア</span>
@@ -33,11 +34,6 @@
             </div>
             
             <div class="tetris__controls">
-                <button class="tetris__button tetris__button--start" id="start-button" aria-label="開始/再開">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
-                </button>
                 <button class="tetris__button tetris__button--pause" id="pause-button" aria-label="一時停止">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <rect x="6" y="4" width="4" height="16"/>

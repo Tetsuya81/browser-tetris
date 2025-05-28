@@ -31,15 +31,18 @@ body {
 
 .tetris {
     display: grid;
-    grid-template-columns: auto 200px;
+    grid-template-columns: 2fr minmax(200px, 1fr);
     gap: 30px;
     align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .tetris__game-area {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
 .tetris__board {
@@ -60,6 +63,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
+    max-width: 250px;
 }
 
 .tetris__stats-panel {
@@ -101,7 +106,7 @@ body {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .tetris__button {
@@ -193,6 +198,20 @@ body {
     background-color: rgba(26, 26, 46, 0.9);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
+}
+
+/* カーソルポインタをボタンに適用 */
+.tetris__button {
+    cursor: pointer;
+}
+
+/* キャンバスのカーソルスタイル */
+.tetris__board {
+    cursor: default;
+}
+
+.tetris__board.clickable {
+    cursor: pointer;
 }
 
 .tetris__mobile-controls-group {
