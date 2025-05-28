@@ -11,23 +11,22 @@
         justify-content: center;
     }
     
-    .tetris__score-panel,
-    .tetris__level-panel,
-    .tetris__lines-panel {
-        flex: 1;
-        min-width: 100px;
+    .tetris__stats-panel {
+        width: 100%;
+        max-width: 300px;
     }
     
     .tetris__controls {
         width: 100%;
         flex-direction: row;
         justify-content: center;
+        gap: 15px;
     }
     
     .tetris__button {
-        flex: 1;
-        padding: 10px 16px;
-        font-size: 0.9rem;
+        width: 45px;
+        height: 45px;
+        padding: 8px;
     }
     
     .tetris__instructions ul {
@@ -46,8 +45,8 @@
     }
     
     .tetris__next-piece {
-        width: 100px !important;
-        height: 100px !important;
+        width: 70px !important;
+        height: 70px !important;
     }
     
     .tetris__score,
@@ -78,8 +77,8 @@
 
 @media (hover: none) and (pointer: coarse) {
     .tetris__button {
-        padding: 14px 28px;
-        font-size: 1.1rem;
+        width: 50px;
+        height: 50px;
     }
     
     .tetris__board {
@@ -97,10 +96,12 @@
         margin-bottom: 20px;
     }
     
-    /* ゲーム画面のサイズ調整 */
+    /* ゲーム画面のサイズ調整 - 比率を10:20（1:2）に固定 */
     .tetris__board {
-        width: min(90vw, 300px) !important;
-        height: min(50vh, 600px) !important;
+        --board-width: min(90vw, 300px);
+        width: var(--board-width) !important;
+        height: calc(var(--board-width) * 2) !important;
+        max-height: 70vh;
     }
     
     .tetris__mobile-controls {
