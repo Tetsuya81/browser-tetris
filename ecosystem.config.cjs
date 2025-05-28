@@ -2,7 +2,7 @@ module.exports = {
   apps: [{
     name: 'browser-tetris',
     script: 'npm',
-    args: 'run preview',
+    args: 'run preview -- --host',
     instances: 1,
     autorestart: true,
     watch: false,
@@ -14,7 +14,7 @@ module.exports = {
     env_development: {
       NODE_ENV: 'development',
       PORT: 5173,
-      args: 'run dev'
+      args: 'run dev -- --host'
     }
   }]
 };
