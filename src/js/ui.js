@@ -9,7 +9,7 @@ export class UI {
         this.scoreElement = document.getElementById('score');
         this.levelElement = document.getElementById('level');
         this.linesElement = document.getElementById('lines');
-        this.cellSize = 30;
+        this.cellSize = 36;
         
         this.setupCanvas();
     }

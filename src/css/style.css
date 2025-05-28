@@ -4,9 +4,9 @@
     --background-color: #1a1a2e;
     --board-background: #16213e;
     --text-color: #ffffff;
-    --cell-size: 30px;
-    --board-width: 300px;
-    --board-height: 600px;
+    --cell-size: 36px;
+    --board-width: 360px;
+    --board-height: 720px;
     --border-radius: 8px;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
@@ -31,10 +31,10 @@ body {
 
 .tetris {
     display: grid;
-    grid-template-columns: 2fr minmax(200px, 1fr);
+    grid-template-columns: 3fr 1fr;
     gap: 30px;
     align-items: start;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     width: 100%;
 }

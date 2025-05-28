@@ -1,6 +1,6 @@
 @media (max-width: 768px) {
     .tetris {
-        grid-template-columns: 1fr minmax(120px, 150px);
+        grid-template-columns: 2fr minmax(120px, 140px);
         gap: 15px;
         padding: 0 10px;
         max-width: 100%;
@@ -84,7 +84,7 @@
     }
     
     .tetris__board {
-        --board-width: min(60vw, 240px);
+        --board-width: min(70vw, 280px);
         width: var(--board-width) !important;
         height: calc(var(--board-width) * 2) !important;
     }
@@ -128,7 +128,8 @@
     }
     
     .tetris__sidebar {
-        width: 250px;
+        width: 280px;
+        max-width: 280px;
     }
 }
 
@@ -155,10 +156,10 @@
     
     /* ゲーム画面のサイズ調整 - 比率を10:20（1:2）に固定 */
     .tetris__board {
-        --board-width: min(50vw, 240px);
+        --board-width: min(65vw, 300px);
         width: var(--board-width) !important;
         height: calc(var(--board-width) * 2) !important;
-        max-height: 65vh;
+        max-height: 70vh;
     }
     
     .tetris__mobile-controls {
